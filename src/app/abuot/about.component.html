@@ -1,0 +1,71 @@
+
+<div class="inner-introduction">
+    <div style="margin: 0 auto;margin-top: 80px;width:40%;">
+        <nz-badge *ngFor="let color of colors" [nzColor]="color"></nz-badge>
+    </div>
+    <nz-card style="margin: 0 auto;width:50%;" [nzActions]="[]" [nzBordered]="false">
+
+        <nz-card-meta
+                nzTitle="Mxnter Ye"
+                [nzDescription]="description"
+                [nzAvatar]="avatarTemplate"
+        ></nz-card-meta>
+        <ng-template #avatarTemplate>
+            <nz-avatar [nzSize]="200" nzSrc="https://portrait.gitee.com/uploads/avatars/user/1843/5529316_mxnter_1585062760.png"></nz-avatar>
+        </ng-template>
+        <ng-template #description>
+            这是一个熟悉 Angular、Java、C 的开发人员.<br>
+            如果有工作联系我的邮箱,索要简历.
+        </ng-template>
+        <button nz-button nzType="default" [nzSize]="'default'" nzShape="link" (click)="OpenUrl('https://github.com/mxnter')">
+            <i nz-icon style="font-size: 24px;" nzType="github" nzTheme="outline"></i>
+        </button>
+        <button nz-button nzType="default" [nzSize]="'default'" nzShape="link" nz-popover [nzContent]="mail" nzTrigger="hover">
+            <i nz-icon style="font-size: 24px;" nzType="mail" nzTheme="outline"></i>
+        </button>
+        <button nz-button nzType="default" [nzSize]="'default'" nzShape="link">
+            <i nz-icon style="font-size: 24px;" nzType="weibo" nzTheme="outline"></i>
+        </button>
+        <button nz-button nzType="default" [nzSize]="'default'" nzShape="link">
+            <i nz-icon style="font-size: 24px;" nzType="dingding" nzTheme="outline"></i>
+        </button>
+        <button nz-button nzType="default" [nzSize]="'default'" nzShape="link">
+            <i nz-icon style="font-size: 24px;" nzType="wechat" nzTheme="outline"></i>
+        </button>
+        <button nz-button nzType="default" [nzSize]="'default'" nzShape="link">
+            <i nz-icon style="font-size: 24px;" nzType="qq" nzTheme="outline"></i>
+        </button>
+    </nz-card>
+    <ng-template #mail>
+        tearwork@outlook.com
+    </ng-template>
+</div>
+<div class="inner-content">
+    <nz-empty *ngIf="true" [nzNotFoundContent]="'诶呀,我们还没写文章哟!'"></nz-empty>
+    <ng-container *ngIf="false" >
+        <nz-card *ngFor="let i of ['1','2','3']" [nzHoverable]="true"  [nzActions]="[actionSetting, actionEdit, actionEllipsis,actionEllipsiss]" [nzBordered]="true">
+            <nz-card-meta
+                    [nzTitle]="'Card title'+ i"
+                    nzDescription="This is the description"
+            ></nz-card-meta>
+            <!-- <ng-template #coverTemplate>
+                <img height="200px" alt="example" src="http://www.dongao.com/upload/resources/image/2017/04/18/61906.jpg" />
+              </ng-template> -->
+            <ng-template #actionSetting>
+                <i nz-icon nzType="heart" nzTheme="outline"></i>
+            </ng-template>
+            <ng-template #actionEdit>
+                <i nz-icon nzType="like" nzTheme="outline"></i>
+            </ng-template>
+            <ng-template #actionEllipsis>
+                <i nz-icon nzType="message" nzTheme="outline"></i>
+            </ng-template>
+            <ng-template #actionEllipsiss>
+                <i nz-icon nzType="share-alt" nzTheme="outline"></i>
+            </ng-template>
+        </nz-card>
+    </ng-container>
+
+</div>
+
+

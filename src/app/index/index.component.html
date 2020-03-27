@@ -1,0 +1,119 @@
+<!-- NG-ZORRO -->
+<!-- <a href="https://github.com/NG-ZORRO/ng-zorro-antd" target="_blank" style="display: flex;align-items: center;justify-content: center;height: 100%;width: 100%;">
+  <img height="300" src="https://img.alicdn.com/tfs/TB1X.qJJgHqK1RjSZFgXXa7JXXa-89-131.svg">
+</a> -->
+<nz-layout>
+    <nz-header class="inner-header" style="border-bottom:0px" >
+        <div class="logo">Ter</div>
+        <ul nz-menu nzTheme="light" nzMode="horizontal">
+            <!-- <li nz-menu-item>TerBlog</li> -->
+            <li nz-menu-item><a href="#">首页</a></li>
+            <li nz-menu-item><a href="http://terbililive.mter.top/" type="_blank">TerBiliLive</a></li>
+            <li nz-menu-item class="user"><a href="https://github.com/mxnter" type="_blank"><i nz-icon style="font-size: 24px;" nzType="github" nzTheme="outline"></i></a></li>
+            <!--      <li nz-menu-item class="user"><i nz-icon type="setting"></i></li>-->
+        </ul>
+    </nz-header>
+    <nz-content>
+        <!-- <nz-breadcrumb>
+          <nz-breadcrumb-item>Home</nz-breadcrumb-item>
+          <nz-breadcrumb-item>List</nz-breadcrumb-item>
+          <nz-breadcrumb-item>App</nz-breadcrumb-item>
+        </nz-breadcrumb> -->
+        <div class="inner-carousel" *ngIf="false" >
+            <nz-carousel  [nzEffect]="'fade'" [nzAutoPlaySpeed]="5000" nzAutoPlay>
+                <div nz-carousel-content>
+                    <img class="img" src="http://www.dongao.com/upload/resources/image/2017/04/18/61906.jpg">
+                </div>
+                <div nz-carousel-content>
+                    <img class="img" src="http://pic.rmb.bdstatic.com/25c008d6b25d0b0b2ea3d3ada86336fa.jpeg">
+                </div>
+                <div nz-carousel-content>
+                    <img class="img" src="http://attachments.gfan.net.cn/forum/attachments2/day_101030/1010302150dc2ba686103d73b7.jpg">
+                </div>
+            </nz-carousel>
+
+
+
+
+            <!-- <div>
+              <img width="100%" src="https://img.alicdn.com/tfs/TB1X.qJJgHqK1RjSZFgXXa7JXXa-89-131.svg">
+            </div> -->
+        </div>
+
+        <div class="inner-introduction">
+            <div style="margin: 0 auto;margin-top: 80px;width:40%;">
+                <nz-badge *ngFor="let color of colors" [nzColor]="color"></nz-badge>
+            </div>
+            <nz-card style="margin: 0 auto;width:50%;" [nzActions]="[]" [nzBordered]="false">
+
+                <nz-card-meta
+                        nzTitle="Mxnter Ye"
+                        [nzDescription]="description"
+                        [nzAvatar]="avatarTemplate"
+                ></nz-card-meta>
+                <ng-template #avatarTemplate>
+                    <nz-avatar [nzSize]="200" nzSrc="https://portrait.gitee.com/uploads/avatars/user/1843/5529316_mxnter_1585062760.png"></nz-avatar>
+                </ng-template>
+                <ng-template #description>
+                    这是一个熟悉 Angular、Java、C 的开发人员.<br>
+                    如果有工作岗位交给我的话,联系我的邮箱,我将回复您我的简历.
+                </ng-template>
+                <button nz-button nzType="default" [nzSize]="'default'" nzShape="link" (click)="OpenUrl('https://github.com/mxnter')">
+                    <i nz-icon style="font-size: 24px;" nzType="github" nzTheme="outline"></i>
+                </button>
+                <button nz-button nzType="default" [nzSize]="'default'" nzShape="link" nz-popover [nzContent]="mail" nzTrigger="hover">
+                    <i nz-icon style="font-size: 24px;" nzType="mail" nzTheme="outline"></i>
+                </button>
+                <button nz-button nzType="default" [nzSize]="'default'" nzShape="link">
+                    <i nz-icon style="font-size: 24px;" nzType="weibo" nzTheme="outline"></i>
+                </button>
+                <button nz-button nzType="default" [nzSize]="'default'" nzShape="link">
+                    <i nz-icon style="font-size: 24px;" nzType="dingding" nzTheme="outline"></i>
+                </button>
+                <button nz-button nzType="default" [nzSize]="'default'" nzShape="link">
+                    <i nz-icon style="font-size: 24px;" nzType="wechat" nzTheme="outline"></i>
+                </button>
+                <button nz-button nzType="default" [nzSize]="'default'" nzShape="link">
+                    <i nz-icon style="font-size: 24px;" nzType="qq" nzTheme="outline"></i>
+                </button>
+            </nz-card>
+            <ng-template #mail>
+                tearwork@outlook.com
+            </ng-template>
+        </div>
+        <div class="inner-content">
+            <nz-empty *ngIf="true" [nzNotFoundContent]="'诶呀,我们还没写文章哟!'"></nz-empty>
+            <ng-container *ngIf="false" >
+                <nz-card *ngFor="let i of ['1','2','3']" [nzHoverable]="true"  [nzActions]="[actionSetting, actionEdit, actionEllipsis,actionEllipsiss]" [nzBordered]="true">
+                    <nz-card-meta
+                            [nzTitle]="'Card title'+ i"
+                            nzDescription="This is the description"
+                    ></nz-card-meta>
+                    <!-- <ng-template #coverTemplate>
+                        <img height="200px" alt="example" src="http://www.dongao.com/upload/resources/image/2017/04/18/61906.jpg" />
+                      </ng-template> -->
+                    <ng-template #actionSetting>
+                        <i nz-icon nzType="heart" nzTheme="outline"></i>
+                    </ng-template>
+                    <ng-template #actionEdit>
+                        <i nz-icon nzType="like" nzTheme="outline"></i>
+                    </ng-template>
+                    <ng-template #actionEllipsis>
+                        <i nz-icon nzType="message" nzTheme="outline"></i>
+                    </ng-template>
+                    <ng-template #actionEllipsiss>
+                        <i nz-icon nzType="share-alt" nzTheme="outline"></i>
+                    </ng-template>
+                </nz-card>
+            </ng-container>
+
+        </div>
+
+
+
+    </nz-content>
+    <nz-footer>TerBlog ©2019 Implement By Angular And ng-zorro-antd</nz-footer>
+    <nz-back-top [nzVisibilityHeight]="200"></nz-back-top>
+</nz-layout>
+
+
