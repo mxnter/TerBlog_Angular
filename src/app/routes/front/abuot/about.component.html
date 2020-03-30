@@ -1,40 +1,53 @@
 
 <div class="inner-introduction">
-    <div style="margin: 0 auto;margin-top: 80px;width:40%;">
-        <nz-badge *ngFor="let color of colors" [nzColor]="color"></nz-badge>
-    </div>
-    <nz-card style="margin: 0 auto;width:50%;" [nzActions]="[]" [nzBordered]="false">
-        <nz-card-meta
-                nzTitle="Mxnter Ye"
-                [nzDescription]="description"
-                [nzAvatar]="avatarTemplate"
-        ></nz-card-meta>
-        <ng-template #avatarTemplate>
-            <nz-avatar [nzSize]="200" nzSrc="https://portrait.gitee.com/uploads/avatars/user/1843/5529316_mxnter_1585062760.png"></nz-avatar>
-        </ng-template>
-        <ng-template #description>
-            这是一个熟悉 Angular、Java、C 的开发人员.<br>
-            如果有工作联系我的邮箱,索要简历.
-        </ng-template>
 
-        <ng-container *ngFor="let socialLink of socialLinks">
-            <button *ngIf="socialLink.type == 'url'" nz-button nzType="default" [nzSize]="'default'" nzShape="link" (click)="OpenUrl(socialLink.content)">
-                <i nz-icon style="font-size: 24px;" nzType="{{socialLink.icon}}" nzTheme="outline"></i>
-            </button>
-            <button *ngIf="socialLink.type == 'msg'" nz-button nzType="default" [nzSize]="'default'" nzShape="link" nz-popover [nzContent]="msg" nzTrigger="hover">
-                <i nz-icon style="font-size: 24px;" nzType="{{socialLink.icon}}" nzTheme="outline"></i>
-            </button>
-            <button *ngIf="socialLink.type == 'img'" nz-button nzType="default" [nzSize]="'default'" nzShape="link" nz-popover [nzContent]="img" nzTrigger="hover">
-                <i nz-icon style="font-size: 24px;" nzType="{{socialLink.icon}}" nzTheme="outline"></i>
-            </button>
-            <ng-template #msg >
-                {{socialLink.content}}
-            </ng-template>
-            <ng-template #img >
-                <img style="max-width: 100px" [src]="socialLink.content" alt="">
-            </ng-template>
-        </ng-container>
-    </nz-card>
+    <div nz-row class="inner-introduction"  >
+        <div nz-col nzXs="0" nzMd="5" nzXl="7">　</div>
+        <div class="inner-about" nz-col  nzXs="24" nzMd="14" nzXl="10">
+
+            <div style="">
+                <nz-badge *ngFor="let color of colors" [nzColor]="color"></nz-badge>
+            </div>
+            <nz-card style="" [nzActions]="[]" [nzBordered]="false">
+                <nz-card-meta
+                        nzTitle="Mxnter Ye"
+                        [nzDescription]="description"
+                        [nzAvatar]="avatarTemplate"
+                ></nz-card-meta>
+                <ng-template #avatarTemplate>
+                    <nz-avatar [nzSize]="200" nzSrc="https://portrait.gitee.com/uploads/avatars/user/1843/5529316_mxnter_1585062760.png"></nz-avatar>
+                    <br>
+                    <span style="font-size: small">此头像严禁他人使用<br>创作者(<a href="https://space.bilibili.com/27897180" target="_blank">小小的小兔团儿</a>)</span>
+                </ng-template>
+                <ng-template #description>
+                    这是一个熟悉 Angular、Java、C 的开发人员.<br>
+                    如果有工作联系我的邮箱,索要简历.<br>
+                    现在的我需要一份工作.
+                </ng-template>
+
+                <ng-container *ngFor="let socialLink of socialLinks">
+                    <button *ngIf="socialLink.type == 'url'" nz-button nzType="default" [nzSize]="'default'" nzShape="link" (click)="OpenUrl(socialLink.content)">
+                        <i nz-icon style="font-size: 24px;" nzType="{{socialLink.icon}}" nzTheme="outline"></i>
+                    </button>
+                    <button *ngIf="socialLink.type == 'msg'" nz-button nzType="default" [nzSize]="'default'" nzShape="link" nz-popover [nzContent]="msg" nzTrigger="hover">
+                        <i nz-icon style="font-size: 24px;" nzType="{{socialLink.icon}}" nzTheme="outline"></i>
+                    </button>
+                    <button *ngIf="socialLink.type == 'img'" nz-button nzType="default" [nzSize]="'default'" nzShape="link" nz-popover [nzContent]="img" nzTrigger="hover">
+                        <i nz-icon style="font-size: 24px;" nzType="{{socialLink.icon}}" nzTheme="outline"></i>
+                    </button>
+                    <ng-template #msg >
+                        {{socialLink.content}}
+                    </ng-template>
+                    <ng-template #img >
+                        <img style="max-width: 100px" [src]="socialLink.content" alt="">
+                    </ng-template>
+                </ng-container>
+            </nz-card>
+
+        </div>
+        <div nz-col nzXs="0" nzMd="5" nzXl="7">　</div>
+    </div>
+
 
 </div>
 <div class="inner-content">
@@ -43,16 +56,16 @@
         <div nz-row>
             <div nz-col nzXs="24" nzMd="12" nzXl="6" *ngFor="let i of blogContent">
 
-                <nz-card class="card"  [nzCover]="coverTemplate" [nzHoverable]="true"  [nzActions]="[actionEdit, actionEllipsiss]" [nzBordered]="true">
-                    <nz-card-meta
+                <nz-card class="card"  [nzCover]="coverTemplate" [nzHoverable]="true"  [nzActions]="[actionSetting,actionEdit]" [nzBordered]="true">
+                    <nz-card-meta (click)="seeBlog(i.id)"
                             [nzTitle]="i.title"
                             [nzDescription]="i.subtitle?i.subtitle:i.content.substring(0,50)"
                     ></nz-card-meta>
                     <ng-template #coverTemplate>
-                        <img *ngIf="i.cover" style="border-radius: 20px 20px 0 0;" alt="example" [src]="i.cover" />
+                        <img (click)="seeBlog(i.id)" *ngIf="i.cover" style="border-radius: 20px 20px 0 0;" alt="example" [src]="i.cover" />
                     </ng-template>
                     <ng-template #actionSetting>
-                        <i nz-icon nzType="heart" nzTheme="outline"></i>
+                        <i nz-icon style="font-size: 24px;" nzType="heart" nzTheme="outline"></i>
                     </ng-template>
                     <ng-template #actionEdit>
                         <nz-badge [nzCount]="i.like" [nzStyle]="{ backgroundColor: 'rgba(255,255,255,0)' ,color:'#1890ff',boxShadow: '0 0 0 0px #d9d9d9 inset'}">

@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {BlogService} from '../../../shared/blog.service';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'app-about',
@@ -34,7 +35,7 @@ export class AboutComponent implements OnInit {
 
     blogContent = [];
 
-    constructor(public blogService: BlogService) {
+    constructor(public blogService: BlogService, public router: Router) {
         // 获取 Blog
         blogService.blogmsg().subscribe(data => {
             if (data.success) {
@@ -49,6 +50,9 @@ export class AboutComponent implements OnInit {
     ngOnInit() {
     }
 
+    seeBlog(id) {
+        this.router.navigate(['/details'], {queryParams: {id}});
+    }
 
     OpenUrl(url) {
         window.open(url, '_blank');
