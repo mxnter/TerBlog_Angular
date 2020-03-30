@@ -1,5 +1,5 @@
 # TerBlog
-这是一个基于 Angular 的 Blog , 尝试中.
+这是一个基于 Angular 的 Blog , 由于时间并不充裕,暂时开发前台页面,不处理后台.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.1.2.
 

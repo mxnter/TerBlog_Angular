@@ -9,24 +9,26 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { registerLocaleData } from '@angular/common';
 import zh from '@angular/common/locales/zh';
-import { AboutComponent } from './abuot/about.component';
-import { IndexComponent } from './index/index.component';
+import {RoutesRoutingModule} from './routes/routes-routing.module';
+import {RoutesModule} from './routes/routes.module';
+import {RouterModule} from '@angular/router';
 
 registerLocaleData(zh);
 
 @NgModule({
   declarations: [
-    AppComponent,
-    AboutComponent,
-    IndexComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    // AppRoutingModule, // 关闭自身带的路由
     NgZorroAntdModule,
     FormsModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    RoutesRoutingModule,
+    RoutesModule,
+    RouterModule.forRoot([])
   ],
   providers: [{ provide: NZ_I18N, useValue: zh_CN }],
   bootstrap: [AppComponent]

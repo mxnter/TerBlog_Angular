@@ -1,0 +1,52 @@
+
+        <div class="inner-carousel">
+            <nz-carousel  [nzEffect]="'fade'" [nzAutoPlaySpeed]="5000" nzAutoPlay>
+                <div nz-carousel-content>
+                    <img class="img" src="http://www.dongao.com/upload/resources/image/2017/04/18/61906.jpg">
+                </div>
+                <div nz-carousel-content>
+                    <img class="img" src="http://pic.rmb.bdstatic.com/25c008d6b25d0b0b2ea3d3ada86336fa.jpeg">
+                </div>
+                <div nz-carousel-content>
+                    <img class="img" src="http://attachments.gfan.net.cn/forum/attachments2/day_101030/1010302150dc2ba686103d73b7.jpg">
+                </div>
+            </nz-carousel>
+        </div>
+
+
+        <div class="inner-content">
+            <nz-empty *ngIf="!blogContent||blogContent.length<1" [nzNotFoundContent]="'诶呀,我们还没写文章哟!'"></nz-empty>
+            <ng-container *ngIf="blogContent&&blogContent.length>0" >
+                <div nz-row>
+                    <div nz-col nzXs="24" nzMd="12" nzXl="6" *ngFor="let i of blogContent">
+
+                        <nz-card class="card"  [nzCover]="coverTemplate" [nzHoverable]="true"  [nzActions]="[actionEdit, actionEllipsiss]" [nzBordered]="true">
+                            <nz-card-meta
+                                    [nzTitle]="i.title"
+                                    [nzDescription]="i.subtitle?i.subtitle:i.content.substring(0,50)"
+                            ></nz-card-meta>
+                            <ng-template #coverTemplate>
+                                <img *ngIf="i.cover" style="border-radius: 20px 20px 0 0;" alt="example" [src]="i.cover" />
+                            </ng-template>
+                            <ng-template #actionSetting>
+                                <i nz-icon nzType="heart" nzTheme="outline"></i>
+                            </ng-template>
+                            <ng-template #actionEdit>
+                                <nz-badge [nzCount]="i.like" [nzStyle]="{ backgroundColor: 'rgba(255,255,255,0)' ,color:'#1890ff',boxShadow: '0 0 0 0px #d9d9d9 inset'}">
+                                    <i nz-icon style="font-size: 24px;" nzType="like" nzTheme="outline" (click)="i.like=i.like+1"></i>
+                                </nz-badge>
+                            </ng-template>
+                            <ng-template #actionEllipsis>
+                                <i nz-icon nzType="message" nzTheme="outline"></i>
+                            </ng-template>
+                            <ng-template #actionEllipsiss>
+                                <i nz-icon style="font-size: 24px;" nzType="share-alt" nzTheme="outline"></i>
+                            </ng-template>
+                        </nz-card>
+
+                    </div>
+                </div>
+
+            </ng-container>
+
+        </div>

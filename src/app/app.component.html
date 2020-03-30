@@ -7,18 +7,19 @@
     <div class="logo">Ter</div>
     <ul nz-menu nzTheme="light" nzMode="horizontal">
       <!-- <li nz-menu-item>TerBlog</li> -->
-      <li nz-menu-item><a href="#">首页</a></li>
-      <li nz-menu-item><a href="http://terbililive.mter.top/" type="_blank">TerBiliLive</a></li>
-      <li nz-menu-item class="user"><a href="https://github.com/mxnter" type="_blank"><i nz-icon style="font-size: 24px;" nzType="github" nzTheme="outline"></i></a></li>
+      <li nz-menu-item><a [routerLink]="'index'">首页</a></li>
+      <li nz-menu-item><a [routerLink]="'about'">关于</a></li>
+      <li nz-menu-item><a href="http://terbililive.mter.top/" target="_blank">TerBiliLive</a></li>
+      <li nz-menu-item class="user"><a href="https://github.com/mxnter" target="_blank"><i nz-icon style="font-size: 24px;" nzType="github" nzTheme="outline"></i></a></li>
 <!--      <li nz-menu-item class="user"><i nz-icon type="setting"></i></li>-->
     </ul>
   </nz-header>
   <nz-content>
-    <app-about></app-about>
+    <router-outlet></router-outlet>
   </nz-content>
-  <nz-footer>TerBlog ©2019 Implement By Angular And ng-zorro-antd</nz-footer>
+  <nz-footer><a href="https://github.com/mxnter/TerBlog_Angular" target="_blank">TerBlog</a> ©2019-2020 Implement By Angular And ng-zorro-antd</nz-footer>
   <nz-back-top [nzVisibilityHeight]="200"></nz-back-top>
 </nz-layout>
 
 
- 
+
