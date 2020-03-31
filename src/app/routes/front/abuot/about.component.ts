@@ -37,14 +37,17 @@ export class AboutComponent implements OnInit {
 
     constructor(public blogService: BlogService, public router: Router) {
         // 获取 Blog
-        blogService.blogmsg().subscribe(data => {
+        blogService.blogData().subscribe(data => {
             if (data.success) {
                 this.blogContent = data.data;
             } else {
-
+                if (data.msg) {
+                    console.error(data.msg);
+                } else {
+                    console.error('请求系统接口错误');
+                }
             }
         });
-        blogService.fed();
     }
 
     ngOnInit() {

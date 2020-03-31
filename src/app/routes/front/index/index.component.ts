@@ -10,18 +10,33 @@ import {Router} from '@angular/router';
 export class IndexComponent implements OnInit {
     title = 'TerBlog';
     blogContent = [];
-
+    carouselData = [];
 
     constructor(public blogService: BlogService, public router: Router) {
-        // 获取 Blog
-        blogService.blogmsg().subscribe(data => {
+        // 获取 轮播图
+        blogService.carouselData().subscribe(data => {
             if (data.success) {
-              this.blogContent = data.data;
+                this.carouselData = data.data;
             } else {
-
+                if (data.msg) {
+                    console.error(data.msg);
+                } else {
+                    console.error('请求系统接口错误');
+                }
             }
         });
-        blogService.fed();
+        // 获取 Blog
+        blogService.blogData().subscribe(data => {
+            if (data.success) {
+                this.blogContent = data.data;
+            } else {
+                if (data.msg) {
+                    console.error(data.msg);
+                } else {
+                    console.error('请求系统接口错误');
+                }
+            }
+        });
     }
 
     ngOnInit() {

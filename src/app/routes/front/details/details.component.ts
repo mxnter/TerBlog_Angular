@@ -11,14 +11,12 @@ import {BlogService} from '../../../shared/blog.service';
 export class DetailsComponent implements OnInit {
 
   blogData: any;
-  constructor(private route: ActivatedRoute, public platformLocation: PlatformLocation, public blogService: BlogService,) {
+  constructor(private route: ActivatedRoute, public platformLocation: PlatformLocation, public blogService: BlogService) {
     route.queryParamMap.subscribe(d => {
-      blogService.getBlogMsgContent(d.get('id')).subscribe(data => {
+      blogService.getBlogDataContent(d.get('id')).subscribe(data => {
         this.blogData =  data[0];
       });
-      blogService.fedBlogMsgContent(d.get('id'));
     });
-
   }
 
   ngOnInit() {
